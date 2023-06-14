@@ -1,5 +1,6 @@
-## Binary Search Tree Graph using Graphviz
-
+## Project Title : Binary Search Tree Graph using Graphviz
+### Name : Nitish Kumar Erelli
+## Project Description : 
 This assignment requires creating a graph representation of a binary search tree (BST) with seven nodes using the Graphviz online editor and the Dot language.
 
 ### Binary Search Tree
