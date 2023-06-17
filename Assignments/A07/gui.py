@@ -67,9 +67,22 @@ def buildWeatherURL(month=None, day=None, year=None, airport=None, filter=None):
     code = values[3]
     filter = [4]
 
+    base_url = "https://wunderground.com/history"
+    filter = "monthly"
+    airport = "YPJT"
+    year = "2021"
+    month = "6"
+    day = "1"
+
+    # build the url to scrape weather from
+    url = f"{base_url}/{filter}/{airport}/{year}-{month}-{day}"
+    # prints: https://www.wunderground.com/history/monthly/YPJT/date/2021-6-1
+    # gets weather info for Perth Australia
+
+    print(url)
     sg.popup('You entered', f"Month: {month}, Day: {day}, Year: {year}, Code: {code}, Filter: {filter}")
 
     # return the URL to pass to wunderground to get appropriate weather data
 
-if __name__=='__main__':
-    buildWeatherURL()
+# # if __name__=='__main__':
+#     buildWeatherURL()
