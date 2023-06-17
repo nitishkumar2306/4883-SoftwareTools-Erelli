@@ -41,10 +41,10 @@ def asyncGetWeather(url):
         driver.quit()                                               # quit ChromeDriver
         return render                                               # return the page source HTML
     
-def mainfunction():
+def mainfunction(url):
 
     # Could be a good idea to use the buildWeatherURL function from gui.py
-    url = 'http://www.wunderground.com/history/daily/KCHO/date/2020-12-31'
+    # url = 'http://www.wunderground.com/history/daily/KCHO/date/2020-12-31'
 
     # get the page source HTML from the URL
     page = asyncGetWeather(url)

@@ -82,6 +82,8 @@ def buildWeatherURL(month=None, day=None, year=None, airport=None, filter=None):
     print(url)
     sg.popup('You entered', f"Month: {month}, Day: {day}, Year: {year}, Code: {code}, Filter: {filter}")
 
+    return url 
+
     # return the URL to pass to wunderground to get appropriate weather data
 
 # # if __name__=='__main__':
