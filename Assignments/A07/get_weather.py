@@ -55,5 +55,9 @@ def mainfunction(url):
     # find the appropriate tag that contains the weather data
     history = soup.find('lib-city-history-observation')
 
+    print(type(history))
+
+    return history
+
     # print the parsed HTML
-    print(history.prettify())
+    # print(history.prettify())
