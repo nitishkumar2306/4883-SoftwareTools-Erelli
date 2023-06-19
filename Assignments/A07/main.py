@@ -2,6 +2,7 @@ import PySimpleGUI as sg
 import pandas as pd
 import get_weather
 
+
 # Read the CSV file
 df = pd.read_csv('airport-codes.csv')
 
@@ -71,7 +72,14 @@ def gui():
                 [sg.Button('OK')]
             ]
             result_window = sg.Window('Details', result_layout, size=(600, 200), element_justification='center')
+
+            base_url = "https://www.wunderground.com/history"
+            # build the url to scrape weather from
+            # url = f"{base_url}/{filter}/{code}/date/{year}-{month}-{day}"
+            url = f"{base_url}/{filter}/{code}/date/{year}-{month}-{day}"
+            # print(url)
             
+                        
             while True:
                 event, _ = result_window.read()
                 
@@ -79,18 +87,13 @@ def gui():
                     break
             
             result_window.close()
+            return url
     
     window.close()
 
-    base_url = "https://www.wunderground.com/history"
-    # build the url to scrape weather from
-    url = f"{base_url}/{filter}/{code}/date/{year}-{month}-{day}"
-    print(url)
-
-    return url
-
 
 if __name__ == '__main__':
-   url = gui()
-#    get_weather.mainfunction(url)
-   
+    url = gui()
+    print(url)
+    print(type(url))
+    get_weather.mainfunction(url)
