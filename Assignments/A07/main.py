@@ -1,6 +1,7 @@
 import PySimpleGUI as sg
 import pandas as pd
 import get_weather
+from calendar import monthrange, isleap
 
 
 # Read the CSV file
@@ -39,9 +40,9 @@ def gui():
     layout = [
         [sg.Text('Select a date:')],
         [
+            [sg.Text('Year:')], [sg.Combo(years, key='-YEAR-', size=(30, 1), readonly=True)],
             [sg.Text('Month:')], [sg.Combo(months, key='-MONTH-', size=(30, 1), readonly=True, enable_events=True)],
             [sg.Text('Day:')], [sg.Combo([], key='-DAY-', size=(30, 1), readonly=True)],
-            [sg.Text('Year:')], [sg.Combo(years, key='-YEAR-', size=(30, 1), readonly=True)],
             [sg.Text('Code:')], [sg.Combo(codes, key='-CODE-', size=(30, 1), readonly=True)],
             [sg.Text('Filter:')], [sg.Combo(filter_options, key='-FILTER-', size=(30, 1), readonly=True)]
         ],
@@ -110,10 +111,10 @@ def ShowData(history):
     # Create PySimpleGUI layout for the table with adjusted column widths
     layout = [
     [sg.Table(values=rows, headings=headers, justification='left', col_widths=[20, 20])]
-    ]
+]
 
     # Create PySimpleGUI window and display the table
-    window = sg.Window('HTML Table', layout)
+    window = sg.Window('Observations', layout)
     event, values = window.read()
     window.close()
 
