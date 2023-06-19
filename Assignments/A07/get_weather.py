@@ -54,13 +54,14 @@ def mainfunction(url):
     # find the appropriate tag that contains the weather data
     history = soup.find('lib-city-history-observation')
 
-    element_string = str(history)
+    return history
 
-    file_path = 'bs4.txt'  # Replace with the desired file path
-    with open(file_path, 'w') as file:
-        file.write(element_string)
+    # element_string = str(history)
 
+    # file_path = 'bs4.txt'  # Replace with the desired file path
+    # with open(file_path, 'w') as file:
+    #     file.write(element_string)
 
 
     # print the parsed HTML
-    # print(history.prettify())                                              # return the page source HTML
+    # print(history.prettify())                  
