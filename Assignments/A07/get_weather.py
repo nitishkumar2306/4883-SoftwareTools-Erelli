@@ -42,22 +42,25 @@ def asyncGetWeather(url):
         return render                                               # return the page source HTML
     
 def mainfunction(url):
-
-    # Could be a good idea to use the buildWeatherURL function from gui.py
-    # url = 'http://www.wunderground.com/history/daily/KCHO/date/2020-12-31'
+    print('In get weather function:', url)
+    print(type(url))
 
     # get the page source HTML from the URL
     page = asyncGetWeather(url)
 
     # parse the HTML
     soup = BeautifulSoup(page, 'html.parser')
-    
+
     # find the appropriate tag that contains the weather data
     history = soup.find('lib-city-history-observation')
 
-    print(type(history))
+    element_string = str(history)
 
-    return history
+    file_path = 'bs4.txt'  # Replace with the desired file path
+    with open(file_path, 'w') as file:
+        file.write(element_string)
+
+
 
     # print the parsed HTML
-    # print(history.prettify())
+    # print(history.prettify())                                              # return the page source HTML
