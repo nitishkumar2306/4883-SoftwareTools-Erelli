@@ -1,8 +1,8 @@
 import PySimpleGUI as sg
 import pandas as pd
 import get_weather
-from calendar import monthrange, isleap
-
+from calendar import monthrange
+from bs4 import BeautifulSoup
 
 # Read the CSV file
 df = pd.read_csv('airport-codes.csv')
@@ -110,7 +110,7 @@ def ShowData(history):
     # Create PySimpleGUI layout for the table
     # Create PySimpleGUI layout for the table with adjusted column widths
     layout = [
-    [sg.Table(values=rows, headings=headers, justification='left', col_widths=[20, 20])]
+    [sg.Table(values=rows, headings=headers, justification='left', col_widths=[25, 25])]
 ]
 
     # Create PySimpleGUI window and display the table
@@ -119,8 +119,85 @@ def ShowData(history):
     window.close()
 
 
+def flatten_nested_tables(table_element):
+
+    thead=table_element.find('thead')
+
+    if thead is not None:
+        headers = [header.get_text(strip=True) for header in thead.find_all('td')]
+    else:
+        headers = []  # or any default value you want to assign
+
+    tbody=table_element.find('tbody')
+    tables=tbody.find_all('table')
+
+
+    flattened_data = []
+    for table in tables:
+        rows = table.find_all('tr')
+        table_data=[]
+        data_row=[]
+        for row in rows:
+           
+            cells = row.find_all('td')
+            for cell in cells:
+                # data_row.append(cell.text.strip())  
+                data_row.append(cell.text.strip() + ' ')
+        table_data.append(" ".join (data_row))
+            
+        flattened_data.append(table_data)
+    # print(flattened_data)    
+
+    # Separate the headers and data
+    convert_list = []
+
+    # Iterate through each sublist in flattened_data
+    for sublist in flattened_data:
+        #print(sublist[0][0].split())
+        if len(flattened_data[0][0].split()) < len(sublist[0].split()):
+            # Split sublist into groups of three items
+            items = sublist[0].split() # Exclude the first item (e.g., 'Max', 'Avg', 'Min')
+            row = [items[i:i+3] for i in range(0, len(items), 3)]
+            print(row)
+        else:
+            row=sublist[0].split()
+        convert_list.append(row)
+
+    # Split sublist into individual items
+    # Transpose the convert_list
+    print(convert_list)
+    convert_list_1 = list(map(list, zip(*convert_list)))
+
+    print( convert_list_1)
+    return convert_list_1,headers
+
+def display_table_data( table_data,headersata):
+
+    layout = [
+        [sg.Table(values=table_data, headings=headersata,justification='center')],
+        [sg.Button('OK')]
+    ]
+
+    window = sg.Window('Table Data', layout, finalize=True)
+    while True:
+        event, _ = window.read()
+        if event == sg.WINDOW_CLOSED or event == 'OK':
+            break
+    window.close()
+
 if __name__ == '__main__':
     url = gui()
+    # url = 'https://www.wunderground.com/history/monthly/CYOW/date/2007-7-6'
+    print(url[37:41])   
     bs4_data = get_weather.mainfunction(url)
-    ShowData(bs4_data)
+
+    if(url[37:41] == 'mont' or url[37:41] == 'week'):
+        # Extract the table data recursively
+        table_data,headers = flatten_nested_tables(bs4_data)
+
+        # Display the table data using PySimpleGUI
+        display_table_data( table_data,headers)
+    else:
+        ShowData(bs4_data)
+  
 
