@@ -35,7 +35,7 @@ def asyncGetWeather(url):
         flushprint("Getting page...")
         driver.get(url)                                             # load the web page from the URL
         flushprint("waiting 3 seconds for dynamic data to load...")
-        time.sleep(3)                                               # wait for the web page to load
+        # time.sleep(3)                                               # wait for the web page to load
         flushprint("Done ... returning page source HTML")
         render = driver.page_source                                 # get the page source HTML
         driver.quit()                                               # quit ChromeDriver
@@ -54,11 +54,14 @@ def mainfunction(url):
     # find the appropriate tag that contains the weather data
     history = soup.find('lib-city-history-observation')
 
+
+ 
+
+    element_string = str(history)
+
+    file_path = 'bs4.html'  # Replace with the desired file path
+    with open(file_path, 'w') as file:
+        file.write(element_string)
+    
     return history
-
-    # element_string = str(history)
-
-    # file_path = 'bs4.txt'  # Replace with the desired file path
-    # with open(file_path, 'w') as file:
-    #     file.write(element_string)
                
