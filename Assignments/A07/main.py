@@ -38,7 +38,6 @@ def gui():
 
     # Define the layout of the window
     layout = [
-        [sg.Text('Select a date:')],
         [
             [sg.Text('Year:')], [sg.Combo(years, key='-YEAR-', size=(30, 1), readonly=True)],
             [sg.Text('Month:')], [sg.Combo(months, key='-MONTH-', size=(30, 1), readonly=True, enable_events=True)],
@@ -110,7 +109,7 @@ def ShowData(history):
     # Create PySimpleGUI layout for the table
     # Create PySimpleGUI layout for the table with adjusted column widths
     layout = [
-    [sg.Table(values=rows, headings=headers, justification='left', col_widths=[25, 25])]
+    [sg.Table(values=rows, headings=headers, justification='left', col_widths=[20, 20])]
 ]
 
     # Create PySimpleGUI window and display the table
