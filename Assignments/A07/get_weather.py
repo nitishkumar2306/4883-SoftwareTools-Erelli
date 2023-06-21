@@ -35,7 +35,7 @@ def asyncGetWeather(url):
         flushprint("Getting page...")
         driver.get(url)                                             # load the web page from the URL
         flushprint("waiting 3 seconds for dynamic data to load...")
-        # time.sleep(3)                                               # wait for the web page to load
+        time.sleep(3)                                               # wait for the web page to load
         flushprint("Done ... returning page source HTML")
         render = driver.page_source                                 # get the page source HTML
         driver.quit()                                               # quit ChromeDriver
