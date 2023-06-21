@@ -50,6 +50,26 @@ python3 main.py
 
 9. Close the application window to exit the program.
 
+## Output:
+## Case 1: Daily Observations
+<img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A07/output/daily_obervation.png" width="250">
+
+<img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A07/output/Screenshot%20from%202023-06-20%2022-06-42.png" height="250">
+
+<img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A07/output/daily_observation_data.png" width="600" height="200">
+
+## Case 2: Weekly Observations
+<img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A07/output/weekly_observation.png" width="250">
+
+<img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A07/output/weekly_observation_data.png" width="600" height="200">
+
+## Case 3: Monthly Observations
+<img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A07/output/monthly_observation.png" width="250">
+
+<img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A07/output/monthly_observation_data.png" width="600" height="200">
+
+
+
 ## Customization
 
 - You can customize the application by modifying the form layout, adding or removing form fields, or adjusting the data parsing logic to suit your specific needs.
