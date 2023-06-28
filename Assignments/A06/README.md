@@ -100,25 +100,27 @@ GitLab is built on Git, the widely-used distributed version control system. It p
 ## Demo Project to show CI/CD pipeline
 
 ### Steps to run the pipeline
-- Authenticate the GitLab using SSH through the command line
-- Create a new group from the left panel group dashboard as shown below
+1. Authenticate the GitLab using SSH through the command line
+2. Create a new group from the left panel group dashboard as shown below
  <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/project_creation_1.png" height="500" width="1000"/>
  
  <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/project_creation_2.png" height="500" width="1000"/>
  
  <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/project_creation_3.png" height="500" width="1000"/>
  
-- Create a new project
+3. Create a new project
+   
   <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/project_creation_4.png" height="500" width="1000"/>
   
   <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/project_creation_5.png" height="500" width="1000"/>
   
   <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/project_creation_6.png" height="500" width="1000"/>
   
-- Clone the repository to the local machine
-- Add required configuration to .gitlab-ci.yml file
-- Add the project to the GitLab project directory
-- Push the changes to the remote repository to trigger the pipeline
+4. Clone the repository to the local machine
+5. Add required configuration to .gitlab-ci.yml file
+6. Add the project to the GitLab project directory
+7. Push the changes to the remote repository to trigger the pipeline
+    
   <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/CICD%20pipeline.png" height="250" width="1000"/>
   
   <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/CICD%20visualizer.png" height="250" width="1000"/>
