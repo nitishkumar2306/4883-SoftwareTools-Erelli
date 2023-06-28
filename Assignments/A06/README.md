@@ -40,23 +40,6 @@ GitLab is built on Git, the widely-used distributed version control system. It p
 - Developers can create merge requests to propose changes, review code, leave comments, and discuss implementation details
 - GitLab also supports inline commenting and versioned discussions, enabling thorough and efficient code collaboration.
 
-## Steps to authenticate GitLab using SSH keys:
-
-- Generate an SSH key in Windows using command line
- ```shell
-  ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
- ```
-<img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/SSH_generation_1.png" height="300" width="500"/>
-
-- Paste the SSH key in GitLab
-
-<img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/SSH_generation_2.png" height="300" width="800"/>
-  
-- Check the authentication
- ```shell
-  ssh -T git@gitlab.com
- ```
-
 
 ## Terminology:
 
