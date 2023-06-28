@@ -75,7 +75,7 @@ GitLab is built on Git, the widely-used distributed version control system. It p
     - Maven uses a declarative XML-based configuration file called "pom.xml" (Project Object Model) to define the project structure, dependencies, and build process.
 
 - ### Pipeline: 
-  A CI/CD pipeline is a series of automated steps or stages that code changes go through from development to deployment. 
+ It is composed of independent jobs that run scripts, grouped into stages. Stages run in sequential order, but jobs within stages run in parallel.
 
 - ### Jobs:
   A job is a specific task or set of tasks within a CI/CD pipeline. It represents a unit of work that is executed as part of the pipeline. 
@@ -100,7 +100,7 @@ GitLab is built on Git, the widely-used distributed version control system. It p
 
 ## Demo Project to show CI/CD pipeline
 
-### Steps to run the pipeline
+### Steps to create a project and run the pipeline
 1. Authenticate the GitLab using SSH through the command line
 2. Create a new group from the left panel group dashboard as shown below
  <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/project_creation_1.png" height="500" width="1000"/>
