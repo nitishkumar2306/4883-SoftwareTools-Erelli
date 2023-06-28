@@ -3,16 +3,17 @@
 ## GitLab: Overview and Features
 
 GitLab is a Source code management platform that provides
-- open-source development platform
 - version control
 - continuous integration/continuous deployment (CI/CD)
-- project management, and collaboration features
+- project management
+- Collaboration and Code Review
+
 in a single integrated solution.
  
 ### Version Control
 GitLab is built on Git, the widely-used distributed version control system. It provides a robust and scalable platform for managing your source code repositories. With GitLab, you can easily create, clone, branch, and merge repositories, making it simple to collaborate with team members and manage your codebase effectively.
 
-<img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/GitLab%20flow.png" height="400" width="600">
+<img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/git.png" height="400" width="600">
 
 ### Integrated CI/CD
 
@@ -26,7 +27,7 @@ GitLab is built on Git, the widely-used distributed version control system. It p
 
 - GitLab includes a range of project management features, making it more than just a version control system. It provides tools for 
   issue tracking
-- allowing you to create and manage tasks, bugs, and feature requests within your projects
+- allows you to create and manage tasks, bugs, and feature requests within your projects
   assign issues
 - set due dates
 - add labels and track progress
@@ -84,12 +85,12 @@ GitLab is built on Git, the widely-used distributed version control system. It p
   They are responsible for running the job's tasks, executing commands, and providing the necessary computing resources.
 - ###  Stages: 
   Stages provide logical separation and allow for better organization and control of the pipeline flow. 
-  Common stages in a pipeline can include 
-- ### Build
-  Test
-  Deploy
-  post-deploy stages
-  Jobs within the same stage are often executed in parallel, while stages are executed sequentially.
+- Common stages in a pipeline
+  - Build
+  - Test
+  - Deploy
+  - post-deploy stages
+  - Jobs within the same stage are often executed in parallel, while stages are executed sequentially.
 
 ## Requirements
 - GitLab
