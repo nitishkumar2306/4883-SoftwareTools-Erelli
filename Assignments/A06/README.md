@@ -16,13 +16,17 @@ in a single integrated solution.
 - Git Bash
  
 ### Version Control
-GitLab is built on Git, the widely-used distributed version control system. It provides a robust and scalable platform for managing your source code repositories. With GitLab, you can easily create, clone, branch, and merge repositories, making it simple to collaborate with team members and manage your codebase effectively. 
+GitLab is built on Git, the widely-used distributed version control system. It provides a robust and scalable platform for managing your source code repositories. With GitLab, you can easily create, clone, branch, and merge repositories, making it simple to collaborate with team members and manage your codebase effectively.
+
+<img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/GitLab%20flow.png" height="400" width="600">
 
 ### Integrated CI/CD
 
 - Continuous Integration (CI): The practice of frequently and automatically integrating code changes from multiple developers into a shared repository. CI aims to detect and address integration issues early by automatically building, testing, and validating code changes.
 
 - Continuous Deployment (CD): The practice of automatically deploying code changes to production or staging environments after they have passed the necessary tests and validations. CD aims to enable rapid and frequent releases of software, ensuring that working and tested code is deployed to production as quickly as possible.
+
+<img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/CICD.png" height="400" width="600">
 
 ### Project Management
 
@@ -46,12 +50,17 @@ GitLab is built on Git, the widely-used distributed version control system. It p
 - Generate an SSH key in Windows using command line
  ```shell
   ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
-```
+ ```
+<img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/SSH_generation_1.png" height="300" width="500"/>
+
 - Paste the SSH key in GitLab
+
+<img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/SSH_generation_2.png" height="300" width="800"/>
+  
 - Check the authentication
-```shell
- `ssh -T git@gitlab.com
-```
+ ```shell
+  ssh -T git@gitlab.com
+ ```
 
 
 ## Terminology:
@@ -59,7 +68,7 @@ GitLab is built on Git, the widely-used distributed version control system. It p
 - ### Merge Request: 
   A Request to merge one branch into another. 
   It provides a space to have a conversation with the team about the changes on a branch.
-It is a central place where changes to the code are reviewed and verified
+  It is a central place where changes to the code are reviewed and verified
 
 - ### Issue: 
   An Issue is a way to track work related to a GitLab project.
@@ -70,35 +79,51 @@ It is a central place where changes to the code are reviewed and verified
     - It provides a comprehensive and standardized way to manage dependencies, build, test, and deploy applications.
     - Maven uses a declarative XML-based configuration file called "pom.xml" (Project Object Model) to define the project structure, dependencies, and build process.
 
-### Pipeline: 
-A CI/CD pipeline is a series of automated steps or stages that code changes go through from development to deployment. 
+- ### Pipeline: 
+  A CI/CD pipeline is a series of automated steps or stages that code changes go through from development to deployment. 
 
-### Jobs:
- A job is a specific task or set of tasks within a CI/CD pipeline. It represents a unit of work that is executed as part of the pipeline. 
-Jobs can include tasks such as building the code, running tests, generating artifacts, deploying to environments, or performing other custom actions. 
-### Runners: 
-Runners are the agents or machines responsible for executing the jobs defined in the CI/CD pipeline. 
-They are responsible for running the job's tasks, executing commands, and providing the necessary computing resources.
-Stages: 
-Stages provide logical separation and allow for better organization and control of the pipeline flow. 
-Common stages in a pipeline can include 
-### Build
-Test
-Deploy
-post-deploy stages
-Jobs within the same stage are often executed in parallel, while stages are executed sequentially.
+- ### Jobs:
+  A job is a specific task or set of tasks within a CI/CD pipeline. It represents a unit of work that is executed as part of the pipeline. 
+  Jobs can include tasks such as building the code, running tests, generating artifacts, deploying to environments, or performing other custom actions. 
+- ### Runners: 
+  Runners are the agents or machines responsible for executing the jobs defined in the CI/CD pipeline. 
+  They are responsible for running the job's tasks, executing commands, and providing the necessary computing resources.
+- ###  Stages: 
+  Stages provide logical separation and allow for better organization and control of the pipeline flow. 
+  Common stages in a pipeline can include 
+- ### Build
+  Test
+  Deploy
+  post-deploy stages
+  Jobs within the same stage are often executed in parallel, while stages are executed sequentially.
 
 ## Demo Project to show CI/CD pipeline
 
 ### Steps to run the pipeline
 - Authenticate the GitLab using SSH through the command line
 - Create a new group from the left panel group dashboard as shown below
-- Create a new project 
+ <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/project_creation_1.png" height="500" width="1000"/>
+ 
+ <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/project_creation_2.png" height="500" width="1000"/>
+ 
+ <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/project_creation_3.png" height="500" width="1000"/>
+ 
+- Create a new project
+  <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/project_creation_4.png" height="500" width="1000"/>
+  
+  <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/project_creation_5.png" height="500" width="1000"/>
+  
+  <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/project_creation_6.png" height="500" width="1000"/>
+  
 - Clone the repository to the local machine
 - Add required configuration to .gitlab-ci.yml file
-- Add the project to the directory
-- Push the changes to remote repository to trigger the pipeline
+- Add the project to the GitLab project directory
+- Push the changes to the remote repository to trigger the pipeline
+  <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/CICD%20pipeline.png" height="250" width="1000"/>
+  
+  <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/CICD%20visualizer.png" height="250" width="1000"/>
 
 ## Conclusion
-GitLab offers a comprehensive DevOps platform that integrates version control, CI/CD, project management, and collaboration features. Its built-in CI/CD capabilities, powered by GitLab CI/CD and its YAML-based markup language, streamline the development and deployment process. With GitLab, teams can effectively manage their code repositories, automate their build and release pipelines, and collaborate seamlessly, all within a single platform.
+GitLab offers a comprehensive DevOps platform that integrates version control, CI/CD, project management, and collaboration features. Its built-in CI/CD capabilities, powered by GitLab 
+CI/CD and its YAML-based markup language, streamline the development and deployment process. With GitLab, teams can effectively manage their code repositories, automate their build and release pipelines, and collaborate seamlessly, all within a single platform.
 
