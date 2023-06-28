@@ -8,12 +8,6 @@ GitLab is a Source code management platform that provides
 - continuous integration/continuous deployment (CI/CD)
 - project management, and collaboration features
 in a single integrated solution.
-
-## Requirements
-- GitLab
-- Maven
-- Visual Studio Code
-- Git Bash
  
 ### Version Control
 GitLab is built on Git, the widely-used distributed version control system. It provides a robust and scalable platform for managing your source code repositories. With GitLab, you can easily create, clone, branch, and merge repositories, making it simple to collaborate with team members and manage your codebase effectively.
@@ -97,6 +91,12 @@ GitLab is built on Git, the widely-used distributed version control system. It p
   post-deploy stages
   Jobs within the same stage are often executed in parallel, while stages are executed sequentially.
 
+## Requirements
+- GitLab
+- Maven
+- Visual Studio Code
+- Git Bash
+
 ## Demo Project to show CI/CD pipeline
 
 ### Steps to run the pipeline
@@ -121,9 +121,9 @@ GitLab is built on Git, the widely-used distributed version control system. It p
 6. Add the project to the GitLab project directory
 7. Push the changes to the remote repository to trigger the pipeline
     
-  <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/CICD%20pipeline.png" height="250" width="1000"/>
+  <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/CICD%20pipeline.png" height="150" width="1000"/>
   
-  <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/CICD%20visualizer.png" height="250" width="1000"/>
+  <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A06/Tool-Images/CICD%20visualizer.png" height="150" width="1000"/>
 
 ## Conclusion
 GitLab offers a comprehensive DevOps platform that integrates version control, CI/CD, project management, and collaboration features. Its built-in CI/CD capabilities, powered by GitLab 
