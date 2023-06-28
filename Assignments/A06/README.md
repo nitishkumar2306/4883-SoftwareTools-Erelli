@@ -44,10 +44,14 @@ GitLab is built on Git, the widely-used distributed version control system. It p
 ## Steps to authenticate GitLab using SSH keys:
 
 - Generate an SSH key in Windows using command line
-  `ssh-keygen -t rsa -b 4096 -C "your_email@example.com" `
+ ```shell
+  ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
 - Paste the SSH key in GitLab
 - Check the authentication
- `ssh -T git@gitlab.com`
+```shell
+ `ssh -T git@gitlab.com
+```
 
 
 ## Terminology:
