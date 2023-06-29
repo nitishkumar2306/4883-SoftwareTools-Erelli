@@ -43,22 +43,8 @@ GitLab is built on Git, the widely-used distributed version control system. It p
 
 ## Terminology:
 
-- ### Merge Request: 
-  A Request to merge one branch into another. 
-  It provides a space to have a conversation with the team about the changes on a branch.
-  It is a central place where changes to the code are reviewed and verified
-
-- ### Issue: 
-  An Issue is a way to track work related to a GitLab project.
-  Issues can be used to report bugs, track tasks, request new features, and ask questions
-
-- ### Maven:
-    - Maven is a powerful build automation and project management tool used primarily for Java-based projects.
-    - It provides a comprehensive and standardized way to manage dependencies, build, test, and deploy applications.
-    - Maven uses a declarative XML-based configuration file called "pom.xml" (Project Object Model) to define the project structure, dependencies, and build process.
-
 - ### Pipeline: 
- It is composed of independent jobs that run scripts, grouped into stages. Stages run in sequential order, but jobs within stages run in parallel.
+  It is composed of independent jobs that run scripts, grouped into stages. Stages run in sequential order, but jobs within stages run in parallel.
 
 - ### Jobs:
   A job is a specific task or set of tasks within a CI/CD pipeline. It represents a unit of work that is executed as part of the pipeline. 
