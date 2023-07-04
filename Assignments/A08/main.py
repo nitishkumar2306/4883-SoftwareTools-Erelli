@@ -3,7 +3,7 @@ from fastapi.responses import RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import csv
-
+from datetime import datetime
 
 description = """🚀
 ## 4883 Software Tools
@@ -86,6 +86,99 @@ def getTotalDeaths(country, region, year):
         sumOfDeaths = sumOfDeaths + int(row[6])
     return {"total_deaths": sumOfDeaths}
 
+def getMaxDeaths(start_date, end_date):
+    ### lets start
+    maxDeaths = 0
+    deaths = 0
+    maxDeathsCountry = None
+    countries = {}
+
+    for row in db:
+        if not row[2] in countries:
+            countries[row[2]] = 0
+
+
+    if start_date and end_date:
+        start_date = datetime.strptime(start_date, "%Y-%m-%d")
+        end_date = datetime.strptime(end_date, "%Y-%m-%d")
+
+        for country in countries.keys():
+            deaths = 0  # Reset deaths for each country
+            for row in db:
+                row_date = datetime.strptime(row[0], "%Y-%m-%d")
+                if start_date <= row_date <= end_date and row[2] == country:
+                    deaths += int(row[6])
+
+            if deaths > maxDeaths:
+                maxDeaths = deaths
+                max_deaths_country = country
+
+        return {"country": max_deaths_country, "Death count:":maxDeaths}   
+    
+    for country in countries.keys():
+        for row in db:
+            if row[2] == country:
+                deaths = deaths + int(row[6])
+        if deaths > maxDeaths:
+            maxDeaths = deaths
+            maxDeathsCountry = country
+        deaths = 0
+    return {"country": maxDeathsCountry, "Death count:":maxDeaths}
+
+def getMinDeaths(start_date, end_date):
+    minDeaths = float('inf')  # Initialize min_deaths with infinity
+    deaths = 0
+    minDeathsCountry = None
+    countries = {}
+
+    for row in db:
+        if not row[2] in countries:
+            countries[row[2]] = 0
+
+
+    if start_date and end_date:
+        start_date = datetime.strptime(start_date, "%Y-%m-%d")
+        end_date = datetime.strptime(end_date, "%Y-%m-%d")
+
+        for country in countries.keys():
+            deaths = 0  # Reset deaths for each country
+            for row in db:
+                row_date = datetime.strptime(row[0], "%Y-%m-%d")
+                if start_date <= row_date <= end_date and row[2] == country:
+                    deaths += int(row[6])
+
+            if deaths < minDeaths:
+                minDeaths = deaths
+                min_deaths_country = country
+
+        return {"country": min_deaths_country, "Death count:":minDeaths}   
+    
+    for country in countries.keys():
+        deaths = 0  # Reset deaths for each country
+        for row in db:
+            if row[2] == country:
+                deaths += int(row[6])
+
+        if deaths < minDeaths:
+            minDeaths = deaths
+            min_deaths_country = country
+
+    return {"country_with_min_deaths": min_deaths_country}
+
+def getAvgDeaths():
+    count = 0
+    avg_deaths = 0
+    sumOfDeaths = 0
+    countries = {}
+    for row in db:
+        # print(row)
+        if not row[2] in countries:
+            countries[row[2]] = 0
+            count += 1
+    for row in db:
+        sumOfDeaths = sumOfDeaths + int(row[6])
+    avg_deaths = sumOfDeaths // count
+    return{avg_deaths}
 
 @app.get("/")
 async def doc_redirect():
@@ -110,6 +203,18 @@ async def regions():
 async def get_deaths(country: str = None, region: str = None, year: int = None):
     return {"Number of deaths": getTotalDeaths(country, region, year)}
 
+@app.get("/max_deaths")
+async def max_deaths(start_date: str = None, end_date: str = None):
+    print("------------Line 162")
+    return{"country with maximum deaths":getMaxDeaths(start_date, end_date)}
+
+@app.get("/min_deaths")
+async def min_deaths(start_date: str = None, end_date: str = None):
+    return{"country with min deaths":getMinDeaths(start_date, end_date)}
+
+@app.get("/avg_deaths")
+async def avg_deaths():
+    return{"Average deaths":getAvgDeaths()}
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="127.0.0.3", port=5000,
