@@ -3,6 +3,12 @@
 ## Project Description : 
 This project is a data retrieval and display application that allows users to fetch weather data from Wunderground based on specified parameters and view it in a tabular format. It utilizes PySimpleGUI for creating the data entry form, Selenium for fetching async data from Wunderground, and BeautifulSoup (BS4) for parsing the retrieved data.
 
+|  #  | name                                     | Description                                                      |
+| :-: | :--------------------------------------- | :--------------------------------------------------------------- |
+|  1  | [airport-codes.csv](./airport-codes.csv) | Necessary data for your gui                                      |
+|  2  | [get_weather.py ](./get_weather.py)      | Example selenium async request to grab weather data              |
+|  3  | [main.py](./main.py)                     | Example gui form to get necessary data to query the weather page |
+
 ## Requirements
 
 - Python 3.x
