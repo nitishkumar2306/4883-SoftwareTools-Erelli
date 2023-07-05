@@ -378,36 +378,36 @@ async def max_deaths(start_date: str = None, end_date: str = None):
 async def min_deaths(start_date: str = None, end_date: str = None):
 
     """
-    Calculates the country with the highest number of deaths within the given date range.
+    Calculates the country with the lowest number of deaths within the given date range.
 
     - **Params:**
       - start_date (str): The start date in the format "YYYY-MM-DD".
       - end_date (str): The end date in the format "YYYY-MM-DD".
 
     - **Returns:**
-      - (dict): A dictionary containing the country with the highest deaths and its death count.
+      - (dict): A dictionary containing the country with the lowest deaths and its death count.
 
     #### Example 1:
 
-    [http://localhost:8080/max_deaths/?start_date=2021-01-01&end_date=2021-12-31](http://localhost:8080/max_deaths/?start_date=2021-01-01&end_date=2021-12-31)
+    [http://localhost:8080/min_deaths/?start_date=2021-01-01&end_date=2021-12-31](http://localhost:8080/min_deaths/?start_date=2021-01-01&end_date=2021-12-31)
 
     #### Response 1:
 
         {
-            "country": "Brazil",
-            "Death count": 5000,
+            "country": "India",
+            "Death count": 1000,
             "success": true
         }
 
     #### Example 2:
 
-    [http://localhost:8080/max_deaths/](http://localhost:8080/max_deaths/)
+    [http://localhost:8080/min_deaths/](http://localhost:8080/min_deaths/)
 
     #### Response 2:
 
         {
-            "country": "India",
-            "Death count": 7000,
+            "country": "Brazil",
+            "Death count": 2000,
             "success": true
         }
 
@@ -420,6 +420,24 @@ async def min_deaths(start_date: str = None, end_date: str = None):
 
 @app.get("/avg_deaths/")
 async def avg_deaths():
+    """
+    Calculates the average number of deaths across all countries.
+
+    - **Returns:**
+      - (dict): A dictionary containing the average number of deaths.
+
+    #### Example:
+
+    [http://localhost:8080/avg_deaths/](http://localhost:8080/avg_deaths/)
+
+    #### Response:
+
+        {
+            "average_deaths": 1000,
+            "success": true
+        }
+
+    """
     try:
         return{"Average deaths":getAvgDeaths()}
     except Exception as e:
