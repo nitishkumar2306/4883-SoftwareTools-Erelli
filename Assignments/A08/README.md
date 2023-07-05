@@ -20,27 +20,31 @@ This project is a RESTful API created using FastAPI that provides access to COVI
 
 The API exposes the following endpoints:
 
+<img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A08/Output/api_home_page.png" height="400" width="1000">
+
 ### `/countries/`
 
 - Retrieves a list of unique countries with COVID-19 data.
   
-- <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A08/Output/api_country.png" height="300" width="1000">
+  <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A08/Output/api_country.png" height="350" width="1000">
 
 
 ### `/regions/`
 
 - Retrieves a list of unique WHO regions with COVID-19 data.
 
-- <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A08/Output/api_regions.png" height="300" width="1000">
+  <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A08/Output/api_region.png" height="350" width="1000">
 
 
 ### `/deaths`
 
 - Retrieves total deaths for all countries.
 
-- <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A08/Output/api_deaths.png" height="600" width="1000">
+  <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A08/Output/api_deaths_1.png" height="300" width="1000">
 
-### `/deaths?country=France`
+  <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A08/Output/api_deaths_2.png" height="300" width="1000">
+
+### `/deaths?country=Brazil`
 
 - Retrieves the total deaths for the given country.
 
@@ -59,23 +63,33 @@ The API exposes the following endpoints:
 
 ### `/max_deaths?min_date=2021-06-01&max_date=2021-12-31`
 
-- Retrieves the maximum number in given range of dates. 
+- Retrieves the maximum number in given range of dates.
+
+  <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A08/Output/api_max_deaths.png" height="350" width="1000">
 
 ### `/max_deaths`
 
 - Retrieves the country that has maximum number of deaths.
 
+  <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A08/Output/api_max_deaths.png" height="350" width="1000">
+
 ### `/min_deaths?min_date=2021-06-01&max_date=2021-12-31`
 
-- Retrieves the maximum number in given range of dates. 
+- Retrieves the maximum number in given range of dates.
+
+  <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A08/Output/api_min_deaths.png" height="350" width="1000">
 
 ### `/min_deaths`
 
 - Retrieves the country that has maximum number of deaths.
 
+  <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A08/Output/api_min_deaths.png" height="350" width="1000">
+
 ### `/avg_deaths/`
 
 - Retrieves the average number of deaths per country.
+
+  <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A08/Output/api_avg_deaths.png" height="350" width="1000">
 
 ## Installation and Setup
 
