@@ -20,7 +20,7 @@ This project is a RESTful API created using FastAPI that provides access to COVI
 
 The API exposes the following endpoints:
 
-<img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A08/Output/api_home_page.png" height="400" width="1000">
+ <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A08/Output/api_home_page.png" height="400" width="1000">
 
 ### `/countries/`
 
