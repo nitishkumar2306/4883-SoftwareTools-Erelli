@@ -37,7 +37,7 @@ def getUniqueCountries():
         print("An error occurred:", str(e))
         return []
 
-    return list(countries.keys())
+    return {"countries": list(countries.keys()), "success": True}
 
 
 
@@ -52,8 +52,7 @@ def getUniqueRegions():
     except Exception as e:
         print("An error occurred:", str(e))
         return []
-
-    return list(regions.keys())
+    return {"regions": list(regions.keys()),"success": True}
 
 
 def getTotalDeaths(country, region, year):
@@ -66,31 +65,31 @@ def getTotalDeaths(country, region, year):
         for row in db:
             if row[2] == country and row[0][:4] == str(year):
                sumOfDeaths += int(row[6])
-        return {"country_year_deaths":sumOfDeaths}
+        return {"total_deaths":sumOfDeaths,"success": True}
     if region and year:
         for row in db:
             if row[3] == region and row[0][:4] == str(year):
                 sumOfDeaths += int(row[6])
-        return {"country_year_deaths":sumOfDeaths}
+        return {"total_deaths":sumOfDeaths,"success": True}
 
     if country:
         for row in db:
             if row[2] == country:
                 sumOfDeaths += int(row[6])
-        return {"total_deaths":sumOfDeaths}
+        return {"total_deaths":sumOfDeaths,"success": True}
 
     if region:
         for row in db:
             if row[3] == region:
                 sumOfDeaths += int(row[6])
-        return {"total_deaths":sumOfDeaths}
+        return {"total_deaths":sumOfDeaths, "success": True}
 
     for row in db:
         sumOfDeaths += int(row[6])
-    return {"total_deaths":sumOfDeaths}
+    return {"total_deaths":sumOfDeaths,"success": True}
    except Exception as e:
     print("An error occurred:", str(e))
-    return {"error": "An error occurred while processing the request."}
+    return {"error": "An error occurred while processing the request.","success": False}
 
 
 def getMaxDeaths(start_date, end_date):
@@ -120,7 +119,7 @@ def getMaxDeaths(start_date, end_date):
                     maxDeaths = deaths
                     max_deaths_country = country
 
-            return {"country": max_deaths_country, "Death count:":maxDeaths}   
+            return {"country": max_deaths_country, "Death count:":maxDeaths, "success": True}   
         
         for country in countries.keys():
             for row in db:
@@ -130,7 +129,7 @@ def getMaxDeaths(start_date, end_date):
                 maxDeaths = deaths
                 maxDeathsCountry = country
             deaths = 0
-        return {"country": maxDeathsCountry, "Death count:":maxDeaths}
+        return {"country": maxDeathsCountry, "Death count:":maxDeaths, "success": True}
 
     except Exception as e:
         print("An error occurred:", str(e))
@@ -164,7 +163,7 @@ def getMinDeaths(start_date, end_date):
                     minDeaths = deaths
                     min_deaths_country = country
 
-            return {"country": min_deaths_country, "Death count:":minDeaths}   
+            return {"country": min_deaths_country, "Death count:":minDeaths, "success": True}   
         
         for country in countries.keys():
             deaths = 0  # Reset deaths for each country
@@ -176,7 +175,7 @@ def getMinDeaths(start_date, end_date):
                 minDeaths = deaths
                 min_deaths_country = country
 
-        return {"country_with_min_deaths": min_deaths_country, "Death count:":minDeaths}
+        return {"country": min_deaths_country, "Death count:":minDeaths, "success": True}
     
     except Exception as e:
         print("An error occurred:", str(e))
@@ -192,7 +191,7 @@ def getAvgDeaths():
         for row in db:
             sumOfDeaths = sumOfDeaths + int(row[6])
         avg_deaths = float(sumOfDeaths /len(db))
-        return{avg_deaths}
+        return{"Average deaths" : avg_deaths, "success": True}
     except Exception as e:
         print("An error occurred:", str(e))
         return {"error": "An error occurred while processing the request."}
@@ -228,10 +227,10 @@ async def countries():
 
     """
     try:
-        return {"countries": getUniqueCountries()}
+        return getUniqueCountries()
     except Exception as e:
         print("An error occurred:", str(e))
-        return {"error": "An error occurred while processing the request."}
+        return {"error": "An error occurred while processing the request.", "success": False}
 
 
 @app.get("/regions/")
@@ -255,13 +254,13 @@ async def regions():
 
     """
     try:
-        return {"Regions": getUniqueRegions()}
+        return getUniqueRegions()
     except Exception as e:
         print("An error occurred:", str(e))
-        return {"error": "An error occurred while processing the request."}
+        return {"error": "An error occurred while processing the request.","success": False}
 
 
-@app.get("/deaths/")
+@app.get("/deaths")
 async def get_deaths(country: str = None, region: str = None, year: int = None):
     """
     Calculates the total deaths based on the provided filters (country, region, year).
@@ -281,13 +280,8 @@ async def get_deaths(country: str = None, region: str = None, year: int = None):
     #### Response 1:
 
         {
-            "total_deaths": 1000,
+            "total_deaths": 703399,
             "success": true,
-            "params": {
-                "country": "Brazil",
-                "region": null,
-                "year": null
-            }
         }
 
     #### Example 2:
@@ -297,13 +291,8 @@ async def get_deaths(country: str = None, region: str = None, year: int = None):
     #### Response 2:
 
         {
-            "country_year_deaths": 42,
+            "total_deaths": 2246,
             "success": true,
-            "params": {
-                "country": null,
-                "region": "EMRO",
-                "year": 2023
-            }
         }
 
     #### Example 3:
@@ -313,24 +302,19 @@ async def get_deaths(country: str = None, region: str = None, year: int = None):
     #### Response 3:
 
         {
-            "total_deaths": 5000,
+            "total_deaths": 6945714,
             "success": true,
-            "params": {
-                "country": null,
-                "region": null,
-                "year": null
-            }
         }
 
     """
     try:
-        return {"Number of deaths": getTotalDeaths(country, region, year)}
+        return getTotalDeaths(country, region, year)
     except Exception as e:
         print("An error occurred:", str(e))
-        return {"error": "An error occurred while processing the request."}
+        return {"error": "An error occurred while processing the request.","success": False}
     
     
-@app.get("/max_deaths/")
+@app.get("/max_deaths")
 async def max_deaths(start_date: str = None, end_date: str = None):
     """
     Calculates the country with the highest number of deaths within the given date range.
@@ -344,13 +328,13 @@ async def max_deaths(start_date: str = None, end_date: str = None):
 
     #### Example 1:
 
-    [http://localhost:8080/max_deaths/?start_date=2021-01-01&end_date=2021-12-31](http://localhost:8080/max_deaths/?start_date=2021-01-01&end_date=2021-12-31)
+    [http://localhost:8080/max_deaths/?start_date=2021-01-31&end_date=2021-03-30](http://localhost:8080/max_deaths/?start_date=2021-01-31&end_date=2021-03-30)
 
     #### Response 1:
 
         {
-            "country": "Brazil",
-            "Death count": 5000,
+            "country": "United States of America",
+            "Death count": 103845,
             "success": true
         }
 
@@ -362,19 +346,19 @@ async def max_deaths(start_date: str = None, end_date: str = None):
 
         {
             "country": "India",
-            "Death count": 7000,
+            "Death count": 1127152,
             "success": true
         }
 
     """
     try:
-        return{"country with maximum deaths":getMaxDeaths(start_date, end_date)}
+        return{getMaxDeaths(start_date, end_date)}
     except Exception as e:
         print("An error occurred:", str(e))
         return {"error": "An error occurred while processing the request."}
     
 
-@app.get("/min_deaths/")
+@app.get("/min_deaths")
 async def min_deaths(start_date: str = None, end_date: str = None):
 
     """
@@ -389,36 +373,37 @@ async def min_deaths(start_date: str = None, end_date: str = None):
 
     #### Example 1:
 
-    [http://localhost:8080/min_deaths/?start_date=2021-01-01&end_date=2021-12-31](http://localhost:8080/min_deaths/?start_date=2021-01-01&end_date=2021-12-31)
+    [http://localhost:8080/min_deaths/?start_date=2021-01-31&end_date=2021-04-30](http://localhost:8080/min_deaths/?start_date=2021-01-31&end_date=2021-04-30)
 
     #### Response 1:
 
+
         {
-            "country": "India",
-            "Death count": 1000,
+            "country": "American Samoa",
+            "Death count:": 0,
             "success": true
         }
-
+    
     #### Example 2:
 
     [http://localhost:8080/min_deaths/](http://localhost:8080/min_deaths/)
 
     #### Response 2:
 
+    
         {
-            "country": "Brazil",
-            "Death count": 2000,
-            "success": true
+            "country": "Democratic People's Republic of Korea",
+            "Death count:": 0
         }
 
     """
     try:
-        return{"country with min deaths":getMinDeaths(start_date, end_date)}
+        return{getMinDeaths(start_date, end_date)}
     except Exception as e:
         print("An error occurred:", str(e))
-        return {"error": "An error occurred while processing the request."}
+        return {"error": "An error occurred while processing the request.", "success": False}
 
-@app.get("/avg_deaths/")
+@app.get("/avg_deaths")
 async def avg_deaths():
     """
     Calculates the average number of deaths across all countries.
@@ -432,18 +417,19 @@ async def avg_deaths():
 
     #### Response:
 
-        {
-            "average_deaths": 1000,
-            "success": true
-        }
+    {
+    
+        "Average deaths": 23.149139120523127
+
+    }
 
     """
     try:
-        return{"Average deaths":getAvgDeaths()}
+        return getAvgDeaths()
     except Exception as e:
         print("An error occurred:", str(e))
-        return {"error": "An error occurred while processing the request."}
+        return {"error": "An error occurred while processing the request.", "success": False}
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app", host="127.0.0.1", port=8000, log_level="debug", reload=True) 
+    uvicorn.run("main:app", host="127.0.0.2", port=8000, log_level="debug", reload=True) 
