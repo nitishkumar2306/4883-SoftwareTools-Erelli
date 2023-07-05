@@ -5,15 +5,9 @@ import uvicorn
 import csv
 from datetime import datetime
 
-description = """🚀
-## 4883 Software Tools
-### Where awesomeness happens
-"""
 
 
-app = FastAPI(
-    description=description,
-)
+app = FastAPI()
 
 db = []
 
