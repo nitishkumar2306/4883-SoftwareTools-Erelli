@@ -23,14 +23,22 @@ The API exposes the following endpoints:
 ### `/countries/`
 
 - Retrieves a list of unique countries with COVID-19 data.
+  
+- <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A08/Output/api_country.png" height="300" width="1000">
+
 
 ### `/regions/`
 
 - Retrieves a list of unique WHO regions with COVID-19 data.
 
+- <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A08/Output/api_regions.png" height="300" width="1000">
+
+
 ### `/deaths`
 
 - Retrieves total deaths for all countries.
+
+- <img src="https://github.com/nitishkumar2306/4883-SoftwareTools-Erelli/blob/main/Assignments/A08/Output/api_deaths.png" height="600" width="1000">
 
 ### `/deaths?country=France`
 
