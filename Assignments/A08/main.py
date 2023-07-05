@@ -185,18 +185,13 @@ def getMinDeaths(start_date, end_date):
 def getAvgDeaths():
 
     count = 0
-    avg_deaths = 0
+    avg_deaths = 0.000
     sumOfDeaths = 0
     countries = {}
     try:
         for row in db:
-            # print(row)
-            if not row[2] in countries:
-                countries[row[2]] = 0
-                count += 1
-        for row in db:
             sumOfDeaths = sumOfDeaths + int(row[6])
-        avg_deaths = sumOfDeaths // count
+        avg_deaths = float(sumOfDeaths /len(db))
         return{avg_deaths}
     except Exception as e:
         print("An error occurred:", str(e))
@@ -266,7 +261,7 @@ async def regions():
         return {"error": "An error occurred while processing the request."}
 
 
-@app.get("/deaths")
+@app.get("/deaths/")
 async def get_deaths(country: str = None, region: str = None, year: int = None):
     """
     Calculates the total deaths based on the provided filters (country, region, year).
@@ -335,7 +330,7 @@ async def get_deaths(country: str = None, region: str = None, year: int = None):
         return {"error": "An error occurred while processing the request."}
     
     
-@app.get("/max_deaths")
+@app.get("/max_deaths/")
 async def max_deaths(start_date: str = None, end_date: str = None):
     """
     Calculates the country with the highest number of deaths within the given date range.
@@ -379,7 +374,7 @@ async def max_deaths(start_date: str = None, end_date: str = None):
         return {"error": "An error occurred while processing the request."}
     
 
-@app.get("/min_deaths")
+@app.get("/min_deaths/")
 async def min_deaths(start_date: str = None, end_date: str = None):
 
     """
@@ -423,7 +418,7 @@ async def min_deaths(start_date: str = None, end_date: str = None):
         print("An error occurred:", str(e))
         return {"error": "An error occurred while processing the request."}
 
-@app.get("/avg_deaths")
+@app.get("/avg_deaths/")
 async def avg_deaths():
     try:
         return{"Average deaths":getAvgDeaths()}
