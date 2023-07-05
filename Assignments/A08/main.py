@@ -32,6 +32,24 @@ with open('data.csv', 'r') as file:
 
 
 def getUniqueCountries():
+    """
+    Fetches the unique countries from the database.
+
+    - **Returns:**
+      - (list) : A list of unique country names.
+
+    #### Example:
+
+    [http://localhost:8080/countries/](http://localhost:8080/countries/)
+
+    #### Response:
+
+        {
+            "countries": ["Afghanistan", "Albania", "Algeria", ...],
+            "success": true
+        }
+
+    """
     global db
     countries = {}
 
@@ -48,6 +66,24 @@ def getUniqueCountries():
 
 
 def getUniqueRegions():
+    """
+    Fetches the unique regions from the database.
+
+    - **Returns:**
+      - (list) : A list of unique region names.
+
+    #### Example:
+
+    [http://localhost:8080/regions/](http://localhost:8080/regions/)
+
+    #### Response:
+
+        {
+            "regions": ["AFRO", "AMRO", "EMRO", ...],
+            "success": true
+        }
+
+    """
     regions = {}
 
     try:
@@ -62,6 +98,66 @@ def getUniqueRegions():
 
 
 def getTotalDeaths(country, region, year):
+   """
+    Calculates the total deaths based on the provided filters (country, region, year).
+
+    - **Params:**
+      - country (str): A country name.
+      - region (str): A region name.
+      - year (int): A 4-digit year.
+
+    - **Returns:**
+      - (dict): A dictionary containing the total deaths based on the filters.
+
+    #### Example 1:
+
+    [http://localhost:8080/deaths/?country=Brazil](http://localhost:8080/deaths/?country=Brazil)
+
+    #### Response 1:
+
+        {
+            "total_deaths": 1000,
+            "success": true,
+            "params": {
+                "country": "Brazil",
+                "region": null,
+                "year": null
+            }
+        }
+
+    #### Example 2:
+
+    [http://localhost:8080/deaths/?region=EMRO&year=2023](http://localhost:8080/deaths/?region=EMRO&year=2023)
+
+    #### Response 2:
+
+        {
+            "country_year_deaths": 42,
+            "success": true,
+            "params": {
+                "country": null,
+                "region": "EMRO",
+                "year": 2023
+            }
+        }
+
+    #### Example 3:
+
+    [http://localhost:8080/deaths/](http://localhost:8080/deaths/)
+
+    #### Response 3:
+
+        {
+            "total_deaths": 5000,
+            "success": true,
+            "params": {
+                "country": null,
+                "region": null,
+                "year": null
+            }
+        }
+
+   """
    sumOfDeaths = 0
    try:
     if country and region:
@@ -98,7 +194,42 @@ def getTotalDeaths(country, region, year):
 
 
 def getMaxDeaths(start_date, end_date):
-    ### lets start
+    """
+    Calculates the country with the highest number of deaths within the given date range.
+
+    - **Params:**
+      - start_date (str): The start date in the format "YYYY-MM-DD".
+      - end_date (str): The end date in the format "YYYY-MM-DD".
+
+    - **Returns:**
+      - (dict): A dictionary containing the country with the highest deaths and its death count.
+
+    #### Example 1:
+
+    [http://localhost:8080/max_deaths/?start_date=2021-01-01&end_date=2021-12-31](http://localhost:8080/max_deaths/?start_date=2021-01-01&end_date=2021-12-31)
+
+    #### Response 1:
+
+        {
+            "country": "Brazil",
+            "Death count": 5000,
+            "success": true
+        }
+
+    #### Example 2:
+
+    [http://localhost:8080/max_deaths/](http://localhost:8080/max_deaths/)
+
+    #### Response 2:
+
+        {
+            "country": "India",
+            "Death count": 7000,
+            "success": true
+        }
+
+    """
+    
     maxDeaths = 0
     deaths = 0
     maxDeathsCountry = None
@@ -141,6 +272,41 @@ def getMaxDeaths(start_date, end_date):
         return {"error": "An error occurred while processing the request."}
 
 def getMinDeaths(start_date, end_date):
+    """
+    Calculates the country with the highest number of deaths within the given date range.
+
+    - **Params:**
+      - start_date (str): The start date in the format "YYYY-MM-DD".
+      - end_date (str): The end date in the format "YYYY-MM-DD".
+
+    - **Returns:**
+      - (dict): A dictionary containing the country with the highest deaths and its death count.
+
+    #### Example 1:
+
+    [http://localhost:8080/max_deaths/?start_date=2021-01-01&end_date=2021-12-31](http://localhost:8080/max_deaths/?start_date=2021-01-01&end_date=2021-12-31)
+
+    #### Response 1:
+
+        {
+            "country": "Brazil",
+            "Death count": 5000,
+            "success": true
+        }
+
+    #### Example 2:
+
+    [http://localhost:8080/max_deaths/](http://localhost:8080/max_deaths/)
+
+    #### Response 2:
+
+        {
+            "country": "India",
+            "Death count": 7000,
+            "success": true
+        }
+
+    """
 
     minDeaths = float('inf')  # Initialize min_deaths with infinity
     deaths = 0
@@ -186,6 +352,24 @@ def getMinDeaths(start_date, end_date):
         return {"error": "An error occurred while processing the request."}
     
 def getAvgDeaths():
+    """
+    Calculates the average number of deaths across all countries.
+
+    - **Returns:**
+      - (dict): A dictionary containing the average number of deaths.
+
+    #### Example:
+
+    [http://localhost:8080/avg_deaths/](http://localhost:8080/avg_deaths/)
+
+    #### Response:
+
+        {
+            "average_deaths": 1000,
+            "success": true
+        }
+
+    """
     count = 0
     avg_deaths = 0
     sumOfDeaths = 0
