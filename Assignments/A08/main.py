@@ -206,7 +206,7 @@ async def doc_redirect():
         return {"error": "An error occurred while processing the request."}
 
 
-@app.get("/countries/")
+@app.get("/countries")
 async def countries():
     """
     Fetches the unique countries from the database.
@@ -216,7 +216,7 @@ async def countries():
 
     #### Example:
 
-    [http://localhost:8080/countries/](http://localhost:8080/countries/)
+    [http://127.0.0.2:8000/docs#/default/countries_countries_get](http://127.0.0.2:8000/docs#/default/countries_countries_get)
 
     #### Response:
 
@@ -233,7 +233,7 @@ async def countries():
         return {"error": "An error occurred while processing the request.", "success": False}
 
 
-@app.get("/regions/")
+@app.get("/regions")
 async def regions():
     """
     Fetches the unique regions from the database.
@@ -243,7 +243,7 @@ async def regions():
 
     #### Example:
 
-    [http://localhost:8080/regions/](http://localhost:8080/regions/)
+    [http://127.0.0.2:8000/docs#/default/regions_regions_get](http://127.0.0.2:8000/docs#/default/regions_regions_get)
 
     #### Response:
 
@@ -275,7 +275,7 @@ async def get_deaths(country: str = None, region: str = None, year: int = None):
 
     #### Example 1:
 
-    [http://localhost:8080/deaths/?country=Brazil](http://localhost:8080/deaths/?country=Brazil)
+    [http://127.0.0.2:8000/deaths?country=Brazil](http://127.0.0.2:8000/deaths?country=Brazil)
 
     #### Response 1:
 
@@ -286,7 +286,7 @@ async def get_deaths(country: str = None, region: str = None, year: int = None):
 
     #### Example 2:
 
-    [http://localhost:8080/deaths/?region=EMRO&year=2023](http://localhost:8080/deaths/?region=EMRO&year=2023)
+    [http://127.0.0.2:8000/deaths?region=EMRO&year=2023](http://127.0.0.2:8000/deaths?region=EMRO&year=2023)
 
     #### Response 2:
 
@@ -297,9 +297,20 @@ async def get_deaths(country: str = None, region: str = None, year: int = None):
 
     #### Example 3:
 
-    [http://localhost:8080/deaths/](http://localhost:8080/deaths/)
+    [http://127.0.0.2:8000/deaths?country=Brazil&year=2022](http://127.0.0.2:8000/deaths?country=Brazil&year=2022)
 
     #### Response 3:
+
+        {
+            "total_deaths": 74917,
+            "success": true
+        }  
+
+    #### Example 4:
+
+    [http://127.0.0.2:8000/docs#/default/get_deaths_deaths_get](http://127.0.0.2:8000/docs#/default/get_deaths_deaths_get)
+
+    #### Response 4:
 
         {
             "total_deaths": 6945714,
@@ -328,7 +339,7 @@ async def max_deaths(start_date: str = None, end_date: str = None):
 
     #### Example 1:
 
-    [http://localhost:8080/max_deaths/?start_date=2021-01-31&end_date=2021-03-30](http://localhost:8080/max_deaths/?start_date=2021-01-31&end_date=2021-03-30)
+    [http://127.0.0.2:8000/max_deaths?start_date=2021-01-31&end_date=2021-03-30](http://127.0.0.2:8000/max_deaths?start_date=2021-01-31&end_date=2021-03-30)
 
     #### Response 1:
 
@@ -340,19 +351,19 @@ async def max_deaths(start_date: str = None, end_date: str = None):
 
     #### Example 2:
 
-    [http://localhost:8080/max_deaths/](http://localhost:8080/max_deaths/)
+    [http://127.0.0.2:8000/max_deaths](http://127.0.0.2:8000/max_deaths)
 
     #### Response 2:
 
         {
-            "country": "India",
-            "Death count": 1127152,
+            "country": "United States of America",
+            "Death count:": 1127152,
             "success": true
         }
 
     """
     try:
-        return{getMaxDeaths(start_date, end_date)}
+        return getMaxDeaths(start_date, end_date)
     except Exception as e:
         print("An error occurred:", str(e))
         return {"error": "An error occurred while processing the request."}
@@ -373,10 +384,9 @@ async def min_deaths(start_date: str = None, end_date: str = None):
 
     #### Example 1:
 
-    [http://localhost:8080/min_deaths/?start_date=2021-01-31&end_date=2021-04-30](http://localhost:8080/min_deaths/?start_date=2021-01-31&end_date=2021-04-30)
+    [http://127.0.0.2:8000/min_deaths?start_date=2021-01-31&end_date=2021-04-30](http://127.0.0.2:8000/min_deaths?start_date=2021-01-31&end_date=2021-04-30)
 
     #### Response 1:
-
 
         {
             "country": "American Samoa",
@@ -386,19 +396,20 @@ async def min_deaths(start_date: str = None, end_date: str = None):
     
     #### Example 2:
 
-    [http://localhost:8080/min_deaths/](http://localhost:8080/min_deaths/)
+    [http://127.0.0.2:8000/min_deaths](http://127.0.0.2:8000/min_deaths)
 
     #### Response 2:
 
     
         {
             "country": "Democratic People's Republic of Korea",
-            "Death count:": 0
+            "Death count:": 0,
+            "success": true
         }
 
     """
     try:
-        return{getMinDeaths(start_date, end_date)}
+        return getMinDeaths(start_date, end_date)
     except Exception as e:
         print("An error occurred:", str(e))
         return {"error": "An error occurred while processing the request.", "success": False}
@@ -413,7 +424,7 @@ async def avg_deaths():
 
     #### Example:
 
-    [http://localhost:8080/avg_deaths/](http://localhost:8080/avg_deaths/)
+    [http://127.0.0.2:8000/avg_deaths](http://127.0.0.2:8000/avg_deaths)
 
     #### Response:
 
